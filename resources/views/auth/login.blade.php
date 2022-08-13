@@ -1,56 +1,41 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('auth.masterauth')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
+<div class="mx-auto bg-white shadow-2xl rounded-xl lg:w-1/3 w-80">
+    <div class="">
+        <img src="{{ asset('assets/img/logo.png') }}" class="w-1/3 mx-auto lg:mt-20 mt-24 pt-3" alt="">
+        <h1 class="font-bree_serif text-center mt-3 text-xl lg:text-3xl">Masuk Akun</h1>
+    </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    @if(session()->has('loginError'))
+    <div class="alert alert-danger alert-dismissable fade-show" role="alert">
+        {{ session('loginError') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+    <form class="card-body mx-auto" action="{{ route('signin.authenticate') }}" method="post">
+        @csrf
+        <div class="form-group input-group">
+            <input name="email" autofocus class="border-none caret-transparent bg-slate-200 rounded-2xl form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email" type="email" required>
+            @error('email')
+            <div class="invalid-feedback">
+                {{ $message }}
             </div>
+            @enderror
+        </div> <!-- form-group// -->
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+        <div class="form-group input-group">
+            <input name="password" class="form-control border-none bg-slate-200 rounded-2xl" placeholder="Password" type="password" required>
+        </div> <!-- form-group// -->
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
+        <div class="form-group">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 w-full h-10 rounded-3xl text-white font-bree_serif"> Masuk </button>
+        </div> <!-- form-group// -->
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+        <p class="text-center font-bree_serif pb-3">Belum punya akun? <a href="{{ route('regis.index') }}">Daftar</a> </p>
+    </form> <!-- card.// -->
+    <!--container end.//-->
+</div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@endsection

@@ -7,14 +7,14 @@
 
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#user">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fas fa-users"></i>
                         <p>USER</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="user">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/dashboard-admin/user">
+                                <a href="{{ route('users.index') }}">
                                     <span class="icon-eye"> Lihat User</span>
                                 </a>
                             </li>
@@ -31,7 +31,7 @@
                     <div class="collapse" id="pesanan">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/dashboard-admin/detail-peasanan">
+                                <a href="{{ route('pesanans.index') }}">
                                     <span class="icon-eye"> Lihat Pesanan</span>
                                 </a>
                             </li>
@@ -48,34 +48,26 @@
                     <div class="collapse" id="produk">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/dashboard-admin/produk">
+                                <a href="{{ route('products.index') }}">
                                     <span class="icon-eye"> Lihat Produk</span>
                                 </a>
-                                <a href="/dashboard-admin/tambah-produk">
+                            </li>
+
+                            <li>
+                                <a href="{{ route('registration-products.index') }}">
+                                    <span class="icon-basket-loaded"> Registrasi Produk</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('products.create') }}">
                                     <span class="icon-note"> Tambah Produk</span>
                                 </a>
                             </li>
+                            
                         </ul>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#registrasi">
-                        <i class="fas fa-boxes"></i>
-                        <p>REGISTRASI PRODUK</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="registrasi">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="/dashboard-admin/registrasi-produk">
-                                    <span class="icon-eye"> Lihat Produk</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
             </ul>
         </div>
     </div>

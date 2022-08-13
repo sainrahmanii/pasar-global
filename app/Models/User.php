@@ -21,7 +21,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'alamat',
+        'no_whatsapp',
     ];
+
+    public function form()
+    {
+        return $this->hasMany(FormAdmin::class, 'name', 'email');
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'name', 'email', 'alamat');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

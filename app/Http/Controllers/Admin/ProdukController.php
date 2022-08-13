@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProdukRequest;
+use App\Models\FormAdmin;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -14,7 +17,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view('admin.produk.tambahproduk');
+        $item = FormAdmin::all();
+        return view('admin.produk.produk', compact('item'));
     }
 
     /**
@@ -24,7 +28,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = Province::all();
+        return view('admin.produk.tambahproduk', compact('provinces'));
     }
 
     /**
@@ -33,9 +38,13 @@ class ProdukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdukRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['no_registrasi'] = mt_rand(100000, 999999);
+        FormAdmin::create($data);
+
+        return redirect('products.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -46,7 +55,7 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        //
+     //
     }
 
     /**

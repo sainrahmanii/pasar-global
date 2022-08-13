@@ -12,39 +12,36 @@
 
     <!-- card user -->
     <div class="row mt-3">
+        @foreach($user as $u)
         <div class="col-md-4">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="card-category">Nama : <span class="float-right">Abdullah</span></div>
-                    <div class="card-category">Email : <span class="float-right">abdullah12@gmail.com</span></div>
-                    <div class="card-category">No. Whatsapp : <span class="float-right">+62 85213221817</span></div>
-                    <button class="btn btn-default mt-2 btn-icon btn-round float-right" data-toggle="modal" data-target="#exampleModal" type="button"><i class="fa fa-plus"></i></button>
+                    <div class="card-category">Nama : <span class="float-right">{{ $u->name}}</span></div>
+                    <div class="card-category">Email : <span class="float-right">{{ $u->email }}</span></div>
+                    <div class="card-category">No. Whatsapp : <span class="float-right">+62{{ $u->no_whatsapp }}</span></div>
+                    <button class="btn btn-default mt-2 btn-icon btn-round float-right" data-toggle="modal" data-target="#modalUser{{ $u->id }}" type="button"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card full-height">
-                <div class="card-body">
-                    <div class="card-category">Nama : <span class="float-right">Abdullah</span></div>
-                    <div class="card-category">Email : <span class="float-right">abdullah12@gmail.com</span></div>
-                    <div class="card-category">No. Whatsapp : <span class="float-right">+62 85213221817</span></div>
-                    <button class="btn btn-default mt-2 btn-icon btn-round float-right" data-toggle="modal" data-target="#exampleModal" type="button"><i class="fa fa-plus"></i></button>
+        <!-- Modal -->
+        <div class="modal fade" id="modalUser{{ $u->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="card-category">Nama : <span class="float-right">{{ $u->name }}</span></div>
+                        <div class="card-category">Email : <span class="float-right">{{ $u->email }}</span></div>
+                        <div class="card-category">No. Whatsapp : <span class="float-right"><a href="http://wa.me/+62{{ $u->no_whatsapp }}">+62{{ $u->no_whatsapp }}</a></span></div>
+                        <div class="card-category">Alamat : <span class="float-right">{{ $u->alamat }}</span></div>
+                        <div class="card-category">Role : <span class="float-right">{{ $u->role }}</span></div>
+                        <button type="button" class="btn btn-danger btn-round btn-icon float-right mt-3" data-dismiss="modal"><i class="fab fa-slack-hash"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card full-height">
-                <div class="card-body">
-                    <div class="card-category">Nama : <span class="float-right">Abdullah</span></div>
-                    <div class="card-category">Email : <span class="float-right">abdullah12@gmail.com</span></div>
-                    <div class="card-category">No. Whatsapp : <span class="float-right">+62 85213221817</span></div>
-                    <button class="btn btn-default mt-2 btn-icon btn-round float-right" data-toggle="modal" data-target="#exampleModal" type="button"><i class="fa fa-plus"></i></button>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
-    <nav aria-label="Page navigation example">
+    <!-- <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -59,24 +56,8 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="card-category">Nama : <span class="float-right">Abdullah</span></div>
-                <div class="card-category">Email : <span class="float-right">abdullah12@gmail.com</span></div>
-                <div class="card-category">No. Whatsapp : <span class="float-right">+62 85213221817</span></div>
-                <div class="card-category">Alamat : <span class="float-right">Pekalangan, Pekalipan, Kota Cirebon - Jawa Barat</span></div>
-                <div class="card-category">Role : <span class="float-right">Admin</span></div>
-                <button type="button" class="btn btn-danger btn-round btn-icon float-right mt-3" data-dismiss="modal"><i class="fab fa-slack-hash"></i></button>
-            </div>
-        </div>
-    </div>
 </div>
 
 

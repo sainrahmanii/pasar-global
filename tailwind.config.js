@@ -8,10 +8,15 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
+    mode: ['jit'],
+
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                calistoga: 'Calistoga',
+                alumni: 'Alumni Sans Inline One',
+                bree_serif: 'Bree Serif',
             },
         },
     },

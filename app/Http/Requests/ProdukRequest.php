@@ -24,13 +24,16 @@ class ProdukRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_produk'   => 'required|max:150',
-            'no_whatsapp'   => 'required|max:13',
+            'nama_produk'   => 'required|max:150|unique:form_admins',
+            'no_whatsapp'   => 'required|min:9, max:13',
             'provinsi'      => 'required|max:100',
-            'kota'          => 'required|max:100',
+            'kota_kabupaten'=> 'required|max:100',
             'kecamatan'     => 'required|max:100',
-            'kelurahan'     => 'required|max:100',
-            'deskripsi'     => 'required|max:500',
+            'kelurahan_desa'=> 'required|max:100',
+            'jasa'          => 'required|max:100',
+            'harga'         => 'required|max:100',
+            'foto_produk_atau_jasa'  => 'required',
+            'deskripsi'     => 'required|max:1000'
         ];
     }
 }

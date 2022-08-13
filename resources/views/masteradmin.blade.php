@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Dashboard - Admin</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="../assets/img/icon.ico" type="image/x-icon" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="../assets/img/ikbal.jpeg" type="image/x-icon" />
 
     <!-- Fonts and icons -->
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -28,8 +29,6 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="../assets/css/demo.css">
 </head>
 
 <body>
@@ -95,6 +94,75 @@
             .catch(error => {
                 console.error(error);
             });
+    </script>
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(function(){
+                $('#prov').on('change', function(){
+                    let id_prov = $('#prov').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('getkota') }}",
+                        data: {id_prov: id_prov},
+                        cache: false,
+
+                        success: function(msg){
+                            $('#kota_kabupaten').html(msg);
+                            $('#kecamatan').html('');
+                            $('#kelurahan_desa').html('');
+                        },
+                        error: function(){
+                            alert('Something Error');
+                        }
+                    });
+                });
+
+                $('#kota_kabupaten').on('change', function(){
+                    let id_kota = $('#kota_kabupaten').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('getkec') }}",
+                        data: {id_kota: id_kota},
+                        cache: false,
+
+                        success: function(msg){
+                            $('#kecamatan').html(msg);
+                            $('#kelurahan_desa').html('');
+                        },
+                        error: function(){
+                            alert('Something Error');
+                        }
+                    });
+                });
+
+                $('#kecamatan').on('change', function(){
+                    let id_kec = $('#kecamatan').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('getkel') }}",
+                        data: {id_kecamatan: id_kec},
+                        cache: false,
+
+                        success: function(msg){
+                            $('#kelurahan_desa').html(msg);
+                        },
+                        error: function(){
+                            alert('Something Error');
+                        }
+                    });
+                });
+
+            })
+        })
     </script>
 </body>
 

@@ -10,16 +10,19 @@
                     <div class="card-title">Statistik Keseluruhan</div>
                     <div class="d-flex flex-wrap justify-content-around mt-2 pb-2 pt-4">
                         <div class="px-2 pb-2 pb-md-0 text-center">
-                            <div id="circles-1"></div>
                             <h6 class="fw-bold mt-3 mb-0">Pengguna</h6>
+                                <h2 class="px-5 py-4 mt-3 bg-success rounded text-white">{{ $user }}</h2>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="circles-2"></div>
                             <h6 class="fw-bold mt-3 mb-0">Penjualanan</h6>
+                            <h2 class="px-5 py-4 mt-3 bg-danger rounded text-white">{{ $transaksi }}</h2>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="circles-3"></div>
                             <h6 class="fw-bold mt-3 mb-0">Produk</h6>
+                            <h2 class="px-5 py-4 mt-3 bg-info rounded text-white">{{ $item }}</h2>
+                            
                         </div>
                     </div>
                 </div>
@@ -28,17 +31,11 @@
         <div class="col-md-6">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="card-title">Grafik Penjualanan</div>
                     <div class="row py-3 mt-2">
-                        <div class="col-md-4 d-flex flex-column justify-content-around">
+                        <div class="col text-center d-flex flex-column justify-content-around">
                             <div>
-                                <h6 class="fw-bold text-uppercase text-success op-8">Total Pendapatan</h6>
-                                <h3 class="fw-bold">Rp 2.000.000</h3>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div id="chart-container">
-                                <canvas id="totalIncomeChart"></canvas>
+                                <h3 class="fw-bold text-uppercase text-success op-8">Total Pendapatan</h3>
+                                <h1 class="fw-bold mt-5">Rp 2.000.000</h1>
                             </div>
                         </div>
                     </div>

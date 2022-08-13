@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('no_checkout');
-            $table->string('name');
-            $table->string('email');
-            $table->string('alamat');
-            $table->string('jasa');
+            $table->string('user_id');
+            $table->string('produk_id');
             $table->timestamps();
         });
     }

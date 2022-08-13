@@ -3,8 +3,9 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
 
-            <a href="/" class="logo">
-                <img src="../assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+            <a href="{{ route('admins.index') }}" class="logo">
+                <img src="../assets/img/inco.png" width="150" alt="navbar brand" class="navbar-brand">
+                <!-- <h3 class="mt-3 text-light mx-auto">Admin - Pasar Global</h3> -->
             </a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -26,7 +27,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                     <li class="nav-item toggle-nav-search hidden-caret">
-                        <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+                        <!-- <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
                             <i class="fa fa-search"></i>
                         </a>
                     </li>
@@ -150,36 +151,37 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
+                    @auth
                     <li class="nav-item dropdown hidden-caret">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                            <div class="avatar-sm">
-                                <img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                            </div>
+                            <h3 class="text-light mt-1">{{ auth()->user()->name }}</h3>
                         </a>
                         <ul class="dropdown-menu dropdown-user animated fadeIn">
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p>
+                                            <h4>{{ auth()->user()->name }}</h4>
+                                            <p class="text-muted">{{ auth()->user()->email }}</p>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">My Profile</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Account Setting</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Logout</a>
-                                </li>
+                                    <form action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                        <button class="dropdown-item" type="submit">
+                                            Logout
+                                        </button>
+                                    </form>
+                                   
+                                </li> -->
                             </div>
                         </ul>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </nav>
