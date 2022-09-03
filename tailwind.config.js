@@ -17,6 +17,7 @@ module.exports = {
                 calistoga: 'Calistoga',
                 alumni: 'Alumni Sans Inline One',
                 bree_serif: 'Bree Serif',
+                passion_one: 'Passion One',
             },
         },
     },

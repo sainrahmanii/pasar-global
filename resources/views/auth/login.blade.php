@@ -17,7 +17,7 @@
     <form class="card-body mx-auto" action="{{ route('signin.authenticate') }}" method="post">
         @csrf
         <div class="form-group input-group">
-            <input name="email" autofocus class="border-none caret-transparent bg-slate-200 rounded-2xl form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email" type="email" required>
+            <input name="email" autofocus class="border-none ring-transparent bg-slate-200 rounded-2xl form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email" type="email" required>
             @error('email')
             <div class="invalid-feedback">
                 {{ $message }}

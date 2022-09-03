@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\user\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,12 +37,18 @@ Route::resource('regis', RegisterController::class)->middleware('guest');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('home', HomeController::class)->middleware('auth');
 Route::resource('registration-products', RegistrasiProdukController::class)->middleware('auth');
+Route::resource('products', TransaksiController::class);
 
 Route::get('registration-products/{id}/set-status', [RegistrasiProdukController::class, 'setStatus'])->name('registration-products.set-status');
 Route::get('registration-products/{id}/delete', [RegistrasiProdukController::class, 'destroy'])->name('registration-products.delete');
 
 Route::post('signin', [LoginController::class, 'authenticate'])->name('signin.authenticate')->middleware('guest');
 // Route::post('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('nama-products/nama-user', [TransaksiController::class, 'check'])->name('products.check');
+Route::get('nama-products/nama-user/success', [TransaksiController::class, 'checkout'])->name('products.checkouts');
+Route::get('start-selling', [HomeController::class, 'index'])->name('selling.index');
+Route::get('register-produk', [HomeController::class, 'create'])->name('register.product');
 
 
 Route::controller(AlamatController::class)->group(function () {

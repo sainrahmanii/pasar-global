@@ -9,7 +9,7 @@
     <title>Pasar global</title>
 </head>
 <body class="bg-gray-50">
-    @include('user.component.navuser')
-    @yield('content')
+@include('user.component.navdesc')    
+@yield('content')
 </body>
 </html>

@@ -1,4 +1,3 @@
-<!-- Navbar goes here -->
 <nav class="bg-white shadow-lg">
     <div class="max-w-7xl mx-auto">
         <div class="flex justify-between">
@@ -9,8 +8,6 @@
                 </a>
                 <div class="hidden md:flex items-center space-x-1">
                     <a href="/" class="py-6 px-5 text-gray-500 hover:border-b-4 border-blue-600 font-semibold hover:text-blue-600 subpixel-antialiased font-bree_serif">Home</a>
-                    <a href="#about" class="py-6 px-5 text-gray-500 border-blue-600 hover:border-b-4 font-semibold hover:text-blue-600 subpixel-antialiased transition duration-300 font-bree_serif">About</a>
-                    <a href="#customor-service" class="py-6 px-5 text-gray-500 border-blue-600 hover:border-b-4 font-semibold hover:text-blue-600 subpixel-antialiased transition duration-300 font-bree_serif">Contact us</a>
                     <a href="{{ route('products.index') }}" class="py-6 px-5 text-gray-500 hover:border-b-4 border-blue-600 font-semibold hover:text-blue-600 subpixel-antialiased font-bree_serif">Market place</a>
                     <a href="{{ route('selling.index') }}" class="py-6 px-5 text-gray-500 hover:border-b-4 border-blue-600 font-semibold hover:text-blue-600 subpixel-antialiased font-bree_serif">Start selling</a>
                 </div>
@@ -32,24 +29,24 @@
         </div>
     </div>
     <!-- mobile menu -->
-    <div class="hidden mobile-menu pb-1" id="navlinks">
-        <ul class="m-3">
-            <li><a href="" class="font-bree_serif block text-sm px-2 py-4 text-whithe font-semibold subpixel-antialiased animation">Home</a></li>
-            <li><a href="#customor-service" class="font-bree_serif block text-sm px-2 py-4 transition duration-300 font-semibold subpixel-antialiased animation">Contact us</a></li>
-            <li><a href="#about" class="font-bree_serif block text-sm px-2 py-4 transition duration-300 font-semibold subpixel-antialiased animation">About</a></li>
-            <li><a href="{{route('products.index') }}" class="font-bree_serif block text-sm px-2 py-4 transition duration-300 font-semibold subpixel-antialiased animation">Market place</a></li>
-            <li><a href="{{route('selling.index') }}" class="font-bree_serif block text-sm px-2 py-4 transition duration-300 font-semibold subpixel-antialiased animation">Start selling</a></li>
-            <div class="items-center m-7">
-                @if(isset(Auth::user()->role))
+    <div class="relative">
+        <div class="hidden mobile-menu pb-1" id="navlinks fixed top-0 left-0 right-0">
+            <ul class="m-3">
+                <li><a href="/" class="font-bree_serif block text-sm px-2 py-4 text-whithe font-semibold subpixel-antialiased animation">Home</a></li>
+                <li><a href="{{ route('products.index') }}" class="font-bree_serif block text-sm px-2 py-4 text-whithe font-semibold subpixel-antialiased animation">Market place</a></li>
+                <li><a href="{{ route('selling.index') }}" class="font-bree_serif block text-sm px-2 py-4 text-whithe font-semibold subpixel-antialiased animation">Start selling</a></li>
+                <div class="items-center m-7">
+                    @if(isset(Auth::user()->role))
 
-                @else
+                    @else
 
-                <li><a href="{{ route('signin.index') }}" class="w-64 h-10 text-center block rounded-r-3xl rounded-l-3xl  py-2 px-4 text-slate-600 font-bold bg-slate-300 lg:m-3 m-2 hover:shadow-lg  mx-auto font-bree_serif">Sign in</a></li>
-                <li><a href="{{ route('regis.index') }}" class="w-64 h-10 text-center block rounded-r-3xl rounded-l-3xl  py-2 px-6 text-white font-bold bg-blue-700 lg:m-3 m-2 hover:bg-blue-900  mx-auto font-bree_serif">Sign up</a></li>
+                    <li><a href="{{ route('signin.index') }}" class="w-64 h-10 text-center block rounded-r-3xl rounded-l-3xl  py-2 px-4 text-slate-600 font-bold bg-slate-300 lg:m-3 m-2 hover:shadow-lg  mx-auto font-bree_serif">Sign in</a></li>
+                    <li><a href="{{ route('regis.index') }}" class="w-64 h-10 text-center block rounded-r-3xl rounded-l-3xl  py-2 px-6 text-white font-bold bg-blue-700 lg:m-3 m-2 hover:bg-blue-900  mx-auto font-bree_serif">Sign up</a></li>
 
-                @endif
-            </div>
-        </ul>
+                    @endif
+                </div>
+            </ul>
+        </div>
     </div>
     <script>
         const btn = document.querySelector("button.mobile-menu-button");
